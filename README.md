@@ -1,4 +1,4 @@
-# AndroidContactsDatabase-tools
+# Android Contacts Database tools
 Tools to extract data from *Android Contacts Database* (*SQLite3*). By default, it's located at */data/data/com.android.providers.contacts/databases/contacts2.db* although some manufacturers may change it.
 
 The easy way to get *contacts2.db* is using [*adb*](https://developer.android.com/studio/releases/platform-tools) tool:
