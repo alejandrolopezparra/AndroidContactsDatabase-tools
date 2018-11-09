@@ -12,7 +12,7 @@ More information about *Android Contacts Database* can be found on:
 
 
 ## [acdb2vcf.py](https://github.com/alejandrolopezparra/AndroidContactsDatabase-tools/blob/master/acdb2vcf.py)
-*Python* tool by *alejandrolopezparra* to export contacts data from *Android Contacts Databases* (*SQLite3*) to *vCard 3.0* text files. It's useful to recover contacts data from an *Android* phone (*contacts2.db*) into *Google Contacts* or other services supporting *vCard* file format (.vcf).
+*Python* tool by [*alejandrolopezparra*](https://github.com/alejandrolopezparra) to export contacts data from *Android Contacts Databases* (*SQLite3*) to *vCard 3.0* text files. It's useful to recover contacts data from an *Android* phone (*contacts2.db*) into *Google Contacts* or other services supporting *vCard* file format (.vcf).
 
 *acdb2vcf.py* v1.0 supports:
 - *Android Contacts Database* format (*SQLite3*).
