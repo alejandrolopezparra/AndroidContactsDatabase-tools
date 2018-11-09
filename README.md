@@ -23,6 +23,28 @@ More information about *Android Contacts Database* can be found on:
 - *Python 2* by default but *Python 3* is also supported.
 - *sqlite3* *Python* module.
 
+### Usage
+```
+acdb2vcf.py [options] <db_input> <vcf_output>
+
+Arguments:
+  [options]
+     --all	All contacts will be exported. By default
+     --google	Google contacts will be exported
+     --exchange	Exchange contacts will be exported
+     --telegram	Telegram contacts will be exported
+     --twitter	Twitter contacts will be exported
+     --phone	Phone contacts will be exported
+     --tuenti	Tuenti contacts will be exported
+     --whatsapp	Whatsapp contacts will be exported
+     --imap	Imap contacts will be exported
+     --sim	Sim contacts will be exported
+
+  <db_input>	Input Android Contact Database (SQLite3), e.g. contacts2.db
+  <vcf_output>	Output Virtual Contact File (vCard) filename, e.g. MyContacts.vcf
+```
+
+### Additional info
 It's based on the original tool and instructions by _Andreas Böhler_ on https://www.aboehler.at/doku/doku.php/blog:2012:1007_recovering_contacts_from_dead_android_phone
 
 It's also based on modifications by _Ian Worthington_ on https://forum.xda-developers.com/android/help/extract-contacts-backup-t3307684
