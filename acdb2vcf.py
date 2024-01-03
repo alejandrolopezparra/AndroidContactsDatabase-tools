@@ -218,10 +218,10 @@ efn = sys.argv[0]
 arg_n = len(sys.argv)
 #print "arg_n: " + str(arg_n)
 if arg_n < 3:
-    print " * Error message: There are less arguments than expected"
+    print(" * Error message: There are less arguments than expected")
     usage(efn)
 elif arg_n > 12:
-    print " * Error message: There are more arguments than expected"
+    print(" * Error message: There are more arguments than expected")
     usage(efn)
 
 # Input and OutPut File Names are the last 2 arguments
@@ -235,13 +235,13 @@ options = {}
 for arg in sys.argv:
     type = arg.replace("--","",1)
     #print "type: " + type
-    if account_types.has_key(type) or type == "all":
+    if type in account_types or type == "all":
     #print "options[" + type + "]: " + arg
         options[type] = arg
     elif arg in (efn, ifn, ofn):
         pass
     else:
-        print " * Error message: option '" + arg + "' is not valid"
+        print(" * Error message: option '" + arg + "' is not valid")
         usage(efn)
 
 
@@ -251,12 +251,12 @@ for arg in sys.argv:
 
 # Building account type filter based on options
 account_filter = ""
-if not options.has_key('all'):
+if 'all' not in options:
    #print "all is not present so filters may be applied"
    i = 0
-   for key in options.keys():
+   for key in list(options.keys()):
       #print "key: " + key
-      if account_types.has_key(key):
+      if key in account_types:
           i += 1
           account_type=account_types[key]
           if i == 1:
@@ -275,27 +275,27 @@ accounts = {}
 while True:
     account = c.fetchone()
     if account is None: break
-    if not accounts.has_key(account[0]):
+    if account[0] not in accounts:
         accounts[account[0]] = account[1]
 
 # Getting contacts for selected accounts
 contacts = {}
-for key in accounts.keys():
+for key in list(accounts.keys()):
     id_filter=" WHERE account_id=" + str(key)
 
     c.execute("SELECT COUNT(*) FROM raw_contacts" + id_filter)
     num_entries = c.fetchone()[0]
-    print " * Getting " + str(num_entries) + " contacts from " + str(accounts[key]) + " (account_id = " + str(key) + ")"
+    print(" * Getting " + str(num_entries) + " contacts from " + str(accounts[key]) + " (account_id = " + str(key) + ")")
 
     c.execute("SELECT _id FROM raw_contacts" + id_filter)
     while True:
         row = c.fetchone()
         if row is None: break
-        if not contacts.has_key(row[0]):
+        if row[0] not in contacts:
             contacts[row[0]] = Contact(row[0])
 
 # Getting data for selected contacts
-for key in contacts.keys():
+for key in list(contacts.keys()):
     c.execute("SELECT mimetype_id, data1, data2, data3, data4, data5, data6, data7, data8, data9, data10 FROM data WHERE raw_contact_id = " + str(contacts[key].GetId()))
     while True:
         row = c.fetchone()
@@ -374,9 +374,9 @@ db.close()
 
 if contacts:
     fp = codecs.open(ofn, "w", "utf-8")
-    fp.write(u'\ufeff')
+    fp.write('\ufeff')
     #print "Contact's Details: "
-    for key in contacts.keys():
+    for key in list(contacts.keys()):
         if contacts[key].GetId() != 0:
             #string = ""
             #last, first = contacts[key].GetName()
